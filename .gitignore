@@ -1,0 +1,10 @@
+*
+!Dockerfile
+!up
+!*.*
+!*/
+*.sw?
+.DS_Store
+*-data/
+*.test
+*.out
