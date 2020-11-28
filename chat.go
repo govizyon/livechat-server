@@ -98,4 +98,4 @@ func (c *Chat) Encode() ([]byte, error) {
 	return msgpack.Marshal(c)
 }
 
-// TODO: Private chats (can only init private chat with people in the same channel)
+// TODOS: Private chats (can only init private chat with people in the same channel)
