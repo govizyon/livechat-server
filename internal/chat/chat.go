@@ -142,7 +142,7 @@ func (api *API) register(w http.ResponseWriter, r *http.Request) {
 
 	if err = api.store.Save(ch); err != nil {
 		ch.Leave(req.UID)
-		http.Error(w, fmt.Sprintf("could not update channel membership: %v", err), 500)
+		http.Error(w, fmt.Sprintf("Kanal üyeliği güncellenemedi: %v", err), 500)
 		return
 	}
 
