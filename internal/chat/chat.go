@@ -124,7 +124,7 @@ func (api *API) register(w http.ResponseWriter, r *http.Request) {
 	}
 	ch, err := api.store.Get(req.Channel)
 	if err != nil || ch.Secret != req.ChannelSecret {
-		http.Error(w, fmt.Sprintf("invalid secret or unexisting channel: %v", err), 500)
+		http.Error(w, fmt.Sprintf("geçersiz gizli ya da tanımsız kanal: %v", err), 500)
 		return
 	}
 
