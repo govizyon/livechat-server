@@ -100,7 +100,7 @@ type registerResp struct {
 
 func (r *registerReq) Bind() error {
 	if !alfaRgx.MatchString(r.UID) {
-		return errors.New("uid must contain only alphanumeric and underscores")
+		return errors.New("uid yalnızca alfanümerik ve alt çizgi içermelidir.")
 	}
 	if !alfaRgx.MatchString(r.Secret) {
 		return errors.New("secret must contain only alphanumeric and underscores")
@@ -136,7 +136,7 @@ func (api *API) register(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if err != nil {
-		http.Error(w, fmt.Sprintf("error registering to channel: %v", err), 500)
+		http.Error(w, fmt.Sprintf("Kanala katılım hatası: %v", err), 500)
 		return
 	}
 
