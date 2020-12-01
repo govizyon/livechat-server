@@ -88,7 +88,7 @@ func (c *Chat) ListMembers() []*User {
 func DecodeChat(b string) (*Chat, error) {
 	var c Chat
 	if err := msgpack.Unmarshal([]byte(b), &c); err != nil {
-		return nil, fmt.Errorf("client: unable to unmarshal chat: %v", err)
+		return nil, fmt.Errorf("istemci: sohbeti geri alamıyor: %v", err)
 	}
 	return &c, nil
 }

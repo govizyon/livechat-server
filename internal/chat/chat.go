@@ -100,7 +100,7 @@ type registerResp struct {
 
 func (r *registerReq) Bind() error {
 	if !alfaRgx.MatchString(r.UID) {
-		return errors.New("uid must contain only alphanumeric and underscores")
+		return errors.New("uid yalnızca alfanümerik ve alt çizgi içermelidir.")
 	}
 	if !alfaRgx.MatchString(r.Secret) {
 		return errors.New("secret must contain only alphanumeric and underscores")
@@ -124,7 +124,7 @@ func (api *API) register(w http.ResponseWriter, r *http.Request) {
 	}
 	ch, err := api.store.Get(req.Channel)
 	if err != nil || ch.Secret != req.ChannelSecret {
-		http.Error(w, fmt.Sprintf("invalid secret or unexisting channel: %v", err), 500)
+		http.Error(w, fmt.Sprintf("geçersiz gizli ya da tanımsız kanal: %v", err), 500)
 		return
 	}
 
@@ -136,13 +136,13 @@ func (api *API) register(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if err != nil {
-		http.Error(w, fmt.Sprintf("error registering to channel: %v", err), 500)
+		http.Error(w, fmt.Sprintf("Kanala katılım hatası: %v", err), 500)
 		return
 	}
 
 	if err = api.store.Save(ch); err != nil {
 		ch.Leave(req.UID)
-		http.Error(w, fmt.Sprintf("could not update channel membership: %v", err), 500)
+		http.Error(w, fmt.Sprintf("Kanal üyeliği güncellenemedi: %v", err), 500)
 		return
 	}
 
