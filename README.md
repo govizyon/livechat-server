@@ -4,7 +4,6 @@ this is a self-hosted live-chat server written in Go.
 It allows you to run a live-chat software on your own infrastructure.
 
 You can create multiple private and public chatrooms where two or more users can be at the same time.
-
 For communication, it uses RESTful endpoints, Websockets, NATS Streaming, and Redis.
 
 ## Getting started
